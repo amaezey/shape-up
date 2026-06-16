@@ -1,0 +1,13 @@
+{
+  "name": "shaping-skills",
+  "version": "0.1.0",
+  "description": "Shaping and breadboarding skills — the Shape Up methodology adapted for working with Claude Code. Turn conversation transcripts into framing and kickoff docs, iterate on problem/solution shapes, and map systems into UI + code affordances.",
+  "author": {
+    "name": "Mae Kennedy",
+    "email": "billie-mae.kennedy@solpeople.com.au"
+  },
+  "homepage": "https://github.com/amaezey/shaping-skills",
+  "repository": "https://github.com/amaezey/shaping-skills",
+  "license": "MIT",
+  "keywords": ["shape-up", "shaping", "breadboarding", "product", "planning", "design"]
+}
