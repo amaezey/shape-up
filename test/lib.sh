@@ -1,5 +1,5 @@
 # shellcheck shell=bash
-# Minimal, dependency-free assertion helpers for the shaping-skills test suite.
+# Minimal, dependency-free assertion helpers for the shape-up test suite.
 # Each test file sources this, runs checks, then calls `summary` and exits with its status.
 
 TESTS_RUN=0

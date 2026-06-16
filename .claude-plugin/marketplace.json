@@ -1,14 +1,14 @@
 {
-  "name": "shaping-skills",
+  "name": "shape-up",
   "owner": {
     "name": "Mae Kennedy",
     "email": "billie-mae.kennedy@solpeople.com.au"
   },
   "plugins": [
     {
-      "name": "shaping-skills",
+      "name": "shape-up",
       "source": "./",
-      "description": "Shaping and breadboarding skills for Claude Code — Shape Up methodology: framing docs, kickoff docs, problem/solution shaping, and breadboarding.",
+      "description": "A Shape Up toolkit for Claude Code — shaping, breadboarding, framing docs, and kickoff docs, with more to come.",
       "category": "planning",
       "keywords": ["shape-up", "shaping", "breadboarding", "product", "planning"]
     }

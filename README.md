@@ -1,8 +1,8 @@
-# Shaping Skills
+# Shape Up
 
-A Claude Code **plugin** bundling skills for shaping and breadboarding — the methodology from [Shape Up](https://basecamp.com/shapeup) adapted for working with an LLM.
+A Claude Code **plugin** for working in the [Shape Up](https://basecamp.com/shapeup) way with an LLM — shaping problems and solutions, breadboarding systems, and turning conversations into framing and kickoff docs.
 
-Originally a collection of standalone skills by [rjs/shaping-skills](https://github.com/rjs/shaping-skills); packaged here as a plugin so the skills and the ripple-check hook install together, with no manual symlinking or `settings.json` editing.
+It starts from the shaping and breadboarding skills by [rjs/shaping-skills](https://github.com/rjs/shaping-skills) (MIT), repackaged as a plugin so the skills and the ripple-check hook install together with no manual symlinking or `settings.json` editing — and is being extended from there with more Shape Up tooling.
 
 ## What's inside
 
@@ -21,7 +21,7 @@ For working with Claude directly on shaping and design.
 - **`/breadboarding`** — Map a system into UI affordances, code affordances, and wiring in one view. Good for slicing into vertical scopes.
 - **`/breadboard-reflection`** — Sync an existing breadboard to the implementation, then find and fix design smells.
 
-> Skills are namespaced by plugin, so they're invoked as `/shaping-skills:shaping`, `/shaping-skills:breadboarding`, etc. (or picked automatically when their description matches the task).
+> Skills are namespaced by plugin, so they're invoked as `/shape-up:shaping`, `/shape-up:breadboarding`, etc. (or picked automatically when their description matches the task).
 
 ## Ripple-check hook
 
@@ -29,18 +29,17 @@ The plugin includes a `PostToolUse` hook (`hooks/shaping-ripple.sh`). When Claud
 
 ## Install
 
-**From a marketplace (local clone):**
+**From GitHub (in Claude Code):**
 
-```bash
-# In Claude Code:
-/plugin marketplace add /path/to/shaping-skills
-/plugin install shaping-skills@shaping-skills
+```
+/plugin marketplace add amaezey/shape-up
+/plugin install shape-up@shape-up
 ```
 
 **Or load directly for testing:**
 
 ```bash
-claude --plugin-dir /path/to/shaping-skills
+claude --plugin-dir /path/to/shape-up
 ```
 
 ## Testing
@@ -55,7 +54,7 @@ See [TESTING.md](TESTING.md) for the full layered approach (deterministic suite,
 ## Structure
 
 ```
-shaping-skills/
+shape-up/
 ├── .claude-plugin/
 │   ├── plugin.json          # Plugin manifest
 │   └── marketplace.json     # Single-plugin marketplace entry
@@ -77,4 +76,4 @@ shaping-skills/
 
 ## Credit
 
-Skills and hook by [rjs](https://github.com/rjs/shaping-skills). See the case study: [Shaping 0-1 with Claude Code](https://x.com/rjs/status/2020184079350563263) and the source project [rjs/tick](https://github.com/rjs/tick).
+The original shaping and breadboarding skills and the ripple-check hook are by [rjs](https://github.com/rjs/shaping-skills), MIT-licensed. See the case study: [Shaping 0-1 with Claude Code](https://x.com/rjs/status/2020184079350563263) and the source project [rjs/tick](https://github.com/rjs/tick). This plugin packages that work and extends it; new skills and tooling beyond the original scope are by Mae Kennedy.

@@ -36,7 +36,7 @@ Exit code is non-zero if any check fails, so it drops straight into CI or a pre-
 Use the `plugin-dev:plugin-validator` agent for a broader pass — manifest schema, naming conventions, security review of the hook, and component discovery:
 
 ```
-Validate the plugin at /Users/mae/Documents/shape-up/shaping-skills
+Validate the plugin at /Users/mae/Documents/shape-up/shape-up
 ```
 
 This is slower and uses an agent, so it's not part of `run.sh`. Run it after structural changes or before a release.
@@ -46,13 +46,13 @@ This is slower and uses an agent, so it's not part of `run.sh`. Run it after str
 Load the plugin into a real session:
 
 ```bash
-claude --plugin-dir /Users/mae/Documents/shape-up/shaping-skills
+claude --plugin-dir /Users/mae/Documents/shape-up/shape-up
 ```
 
 Then verify the things that only exist at runtime:
 
-- [ ] `/help` lists all five skills as `shaping-skills:<name>`.
-- [ ] Invoking one (e.g. `/shaping-skills:breadboarding`) loads its instructions.
+- [ ] `/help` lists all five skills as `shape-up:<name>`.
+- [ ] Invoking one (e.g. `/shape-up:breadboarding`) loads its instructions.
 - [ ] A skill is auto-selected when you describe a matching task without naming it (tests the `description` triggers).
 - [ ] **Live hook fire:** create a `.md` file containing `shaping: true` in its frontmatter, edit it, and confirm the ripple checklist appears. Edit any other file and confirm silence.
 - [ ] Skill *output quality* on a real transcript — subjective, eyeball it.

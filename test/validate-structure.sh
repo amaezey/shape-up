@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Structure, manifest, and skill-frontmatter checks for the shaping-skills plugin.
+# Structure, manifest, and skill-frontmatter checks for the shape-up plugin.
 # Deterministic and fast — catches the mechanical breakages a future edit could
 # introduce: malformed JSON, a renamed/lowercase SKILL.md, a name/dir mismatch,
 # missing frontmatter, or a hardcoded path sneaking into the hook config.
@@ -21,7 +21,7 @@ PJ="$ROOT/.claude-plugin/plugin.json"
 check_file "plugin.json exists"        "$PJ"
 check      "plugin.json is valid JSON" "$(valid_json "$PJ")" "ok"
 PNAME="$(jq -r '.name // empty' "$PJ")"
-check      "plugin.json name is kebab-case and set" "$PNAME" "shaping-skills"
+check      "plugin.json name is kebab-case and set" "$PNAME" "shape-up"
 check_nonempty "plugin.json has a description" "$(jq -r '.description // empty' "$PJ")"
 check_nonempty "plugin.json has a version"     "$(jq -r '.version // empty' "$PJ")"
 

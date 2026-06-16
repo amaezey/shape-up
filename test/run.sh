@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Runs the full deterministic test suite for the shaping-skills plugin.
+# Runs the full deterministic test suite for the shape-up plugin.
 # Fast, no LLM, no network. For the deep periodic pass, use the
 # plugin-dev:plugin-validator agent (see TESTING.md). For skill loading and
 # live hook firing, see the manual in-session checklist in TESTING.md.
