@@ -1,6 +1,6 @@
 ---
 name: slicing
-description: Break a completed breadboard into vertical, demo-able implementation slices (V1–V9). Use when you have a breadboarded shape and need to plan build order — when the user wants to slice work into demoable increments, sequence implementation, decide what to build first, or turn a breadboard into shippable chunks. Each slice cuts through UI, logic, and data to produce something you can actually demo.
+description: Break a completed breadboard into vertical, demo-able implementation slices (V1–V9) and plan build order. Use whenever the user wants to slice work into demoable increments, sequence implementation, decide what to build first, or turn a breadboarded shape into shippable chunks — each slice cuts through UI, logic, and data to produce something you can actually demo. Not for mapping a system into affordances in the first place (breadboarding) or defining requirements and comparing approaches (shaping).
 ---
 
 # Slicing a Breadboard

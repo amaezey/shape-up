@@ -1,6 +1,6 @@
 ---
 name: breadboarding
-description: Transform a workflow description into affordance tables showing UI and Code affordances with their wiring. Use to map existing systems or design new ones from shaped parts.
+description: Map a workflow into a concrete picture of its affordances and wiring — UI affordances, code affordances (handlers, queries, services, stores), and how they call and feed each other across places. Use whenever the user wants to understand how an existing feature works in the code, trace a user journey end to end, see where state is read and written, find every place a value flows, or turn shaped parts into concrete affordances — even if they never say 'breadboard'. Not for deciding requirements or comparing approaches (shaping), breaking a finished breadboard into build increments (slicing), or auditing a breadboard that drifted from the code (breadboard-reflection).
 ---
 
 # Breadboarding

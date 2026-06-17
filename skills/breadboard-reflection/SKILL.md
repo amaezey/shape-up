@@ -1,6 +1,6 @@
 ---
 name: breadboard-reflection
-description: Reflect on an existing breadboard by syncing it to the implementation, then finding and fixing design smells. Use when reviewing, auditing, or refining a breadboard built with the breadboarding skill, or when a breadboard has drifted from the code.
+description: Audit and improve an existing breadboard: sync it to the current implementation (the code is ground truth), then find and fix design smells — bad names, wrong wiring, missing affordances, hidden coupling. Use whenever the user wants to review, audit, refine, or sanity-check a breadboard, or when a breadboard has drifted from the code it describes. Not for building a breadboard from scratch (breadboarding) or slicing one into build increments (slicing).
 ---
 
 # Breadboard Analysis

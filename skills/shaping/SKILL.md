@@ -1,6 +1,6 @@
 ---
 name: shaping
-description: Use this methodology when collaboratively shaping a solution with the user - iterating on problem definition (requirements) and solution options (shapes).
+description: Collaboratively shape a feature before building it — iterate on the problem (requirements) and candidate solutions (shapes), then run fit checks to decide which approach actually satisfies the requirements. Use whenever the user is weighing how to build something, comparing multiple approaches, separating what a feature must do from how to do it, pinning down fuzzy or ballooning requirements, or pressure-testing a plan before committing — even if they never say 'shaping'. Not for turning transcripts into docs (framing-doc/kickoff-doc), mapping existing code (breadboarding), or breaking work into build increments (slicing).
 ---
 
 # Shaping Methodology
