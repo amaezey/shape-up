@@ -20,7 +20,7 @@ Ask the user:
 
 ## What a Frame Document Contains
 
-A frame has three sections:
+A frame has four parts — three core, plus an optional fourth. The numbered subsections below explain each; the **Document Format** template at the end of this skill is the authoritative output layout, including heading levels.
 
 ### 1. Source — What was actually said
 

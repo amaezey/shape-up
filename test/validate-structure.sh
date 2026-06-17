@@ -45,7 +45,7 @@ check      "hooks.json has no hardcoded /Users/ paths" "$(grep -c '/Users/' "$HJ
 check_exec "hook script is executable" "$ROOT/hooks/shaping-ripple.sh"
 
 # --- skills: structure + frontmatter ---
-EXPECTED_SKILLS=5
+EXPECTED_SKILLS=6
 found=0
 for d in "$ROOT"/skills/*/; do
   [[ -d "$d" ]] || continue

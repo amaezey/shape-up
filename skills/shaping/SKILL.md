@@ -211,7 +211,7 @@ These can happen in any order:
 - **Populate R** - Gather requirements as they emerge
 - **Sketch a shape** - Propose a high-level approach (A, B, C...)
 - **Detail (components)** - Break a shape into components (B1, B2...)
-- **Detail (affordances)** - Expand a selected shape into concrete UI/Non-UI affordances and wiring
+- **Detail (affordances)** - Expand a selected shape into concrete UI and Code affordances and wiring
 - **Explore alternatives** - For a component, identify options (C3-A, C3-B...)
 - **Check fit** - Build a fit check (decision matrix) playing options against R
 - **Extract Rs** - When fit checks reveal implicit requirements, add them to R as standalone items
@@ -246,71 +246,14 @@ When re-rendering a requirements table or shape table after making changes, mark
 
 ## Spikes
 
-A spike is an investigation task to learn how the existing system works and what concrete steps are needed to implement a component. Use spikes when there's uncertainty about mechanics or feasibility.
-
-### File Management
-
-**Always create spikes in their own file** (e.g., `spike.md` or `spike-[topic].md`). Spikes are standalone investigation documents that may be shared or worked on independently from the shaping doc.
-
-### Purpose
-
-- Learn how the existing system works in the relevant area
-- Identify **what we would need to do** to achieve a result
-- Enable informed decisions about whether to proceed
-- Not about effort — effort is implicit in the steps themselves
-- **Investigate before proposing** — discover what already exists; you may find the system already satisfies requirements
-
-### Structure
-
-```markdown
-## [Component] Spike: [Title]
-
-### Context
-Why we need this investigation. What problem we're solving.
-
-### Goal
-What we're trying to learn or identify.
-
-### Questions
-
-| # | Question |
-|---|----------|
-| **X1-Q1** | Specific question about mechanics |
-| **X1-Q2** | Another specific question |
-
-### Acceptance
-Spike is complete when all questions are answered and we can describe [the understanding we'll have].
-```
-
-### Acceptance Guidelines
-
-Acceptance describes the **information/understanding** we'll have, not a conclusion or decision:
-
-- ✅ "...we can describe how users set their language and where non-English titles appear"
-- ✅ "...we can describe the steps to implement [component]"
-- ❌ "...we can answer whether this is a blocker" (that's a decision, not information)
-- ❌ "...we can decide if we should proceed" (decision comes after the spike)
-
-The spike gathers information; decisions are made afterward based on that information.
-
-### Question Guidelines
-
-Good spike questions ask about mechanics:
-- "Where is the [X] logic?"
-- "What changes are needed to [achieve Y]?"
-- "How do we [perform Z]?"
-- "Are there constraints that affect [approach]?"
-
-Avoid:
-- Effort estimates ("How long will this take?")
-- Vague questions ("Is this hard?")
-- Yes/no questions that don't reveal mechanics
+A spike is an investigation task to learn how the existing system works and what concrete steps a component needs. Use one when there's uncertainty about mechanics or feasibility — investigate before proposing, since you may find the system already satisfies the requirement. For the full procedure (file management, structure, acceptance and question guidelines), see [references/spikes.md](references/spikes.md).
 
 ## Breadboards
 
 Use the `/breadboarding` skill to map existing systems or detail a shape into concrete affordances. Breadboarding produces:
 - UI Affordances table
-- Non-UI Affordances table
+- Code Affordances table
+- Data Stores table
 - Wiring diagram grouped by Place
 
 Invoke breadboarding when you need to:
@@ -320,7 +263,7 @@ Invoke breadboarding when you need to:
 
 ### Tables Are the Source of Truth
 
-The affordance tables (UI and Non-UI) define the breadboard. The Mermaid diagram renders them.
+The affordance tables (UI and Code) define the breadboard. The Mermaid diagram renders them.
 
 When receiving feedback on a breadboard:
 1. **First** — update the affordance tables (add/remove/modify affordances, update Wires Out)
@@ -448,7 +391,8 @@ Use "Detail X" (not a new letter) to show this is a breakdown of Shape X, not an
 
 Use the `/breadboarding` skill to produce:
 - **UI Affordances table** — Things users see and interact with (inputs, buttons, displays)
-- **Non-UI Affordances table** — Data stores, handlers, queries, services
+- **Code Affordances table** — Handlers, queries, services, subscriptions
+- **Data Stores table** — Properties, arrays, and observables that hold state
 - **Wiring diagram** — How affordances connect across places
 
 ### Why "Detail X" Not "C"
@@ -462,75 +406,9 @@ Detail B = expansion of B (not a choice)
 
 ## Documents
 
-Shaping produces up to four documents. Each has a distinct role:
+Shaping produces up to four documents — **Frame** (the why), **Shaping doc** (the working document and ground truth for R, shapes, parts, and fit checks), **Slices doc** (the implementation plan), and per-slice **Slice plans**. For their full roles, the document lifecycle, capturing source material, and file management, see [references/documents.md](references/documents.md).
 
-| Document | Contains | Purpose |
-|----------|----------|---------|
-| **Frame** | Source, Problem, Outcome | The "why" — concise, stakeholder-level |
-| **Shaping doc** | Requirements, Shapes (CURRENT/A/B/...), Affordances, Breadboard, Fit Check | The working document — exploration and iteration happen here |
-| **Slices doc** | Slice details, affordance tables per slice, wiring diagrams | The implementation plan — how to build incrementally |
-| **Slice plans** | V1-plan.md, V2-plan.md, etc. | Individual implementation plans for each slice |
-
-### Document Lifecycle
-
-```
-Frame (problem/outcome)
-    ↓
-Shaping (explore, detail, breadboard)
-    ↓
-Slices (plan implementation)
-```
-
-**Frame** can be written first — it captures the "why" before any solution work begins. It contains:
-- **Source** — Original requests, quotes, or material that prompted the work (verbatim)
-- **Problem** — What's broken, what pain exists (distilled from source)
-- **Outcome** — What success looks like (high-level, not solution-specific)
-
-### Capturing Source Material
-
-When the user provides source material during framing (user requests, quotes, emails, slack messages, etc.), **always capture it verbatim** in a Source section at the top of the frame document.
-
-```markdown
-## Source
-
-> I'd like to ask again for your thoughts on a user scenario...
->
-> Small reminder: at the moment, if I want to keep my country admin rights
-> for Russia and Crimea while having Europe Center as my home center...
-
-> [Additional source material added as received]
-
----
-
-## Problem
-...
-```
-
-**Why this matters:**
-- The source is the ground truth — Problem/Outcome are interpretations
-- Preserves context that may be relevant later
-- Allows revisiting the original request if the distillation missed something
-- Multiple sources can be added as they arrive during framing
-
-**When to capture:**
-- User pastes a request or quote
-- User shares an email or message from a stakeholder
-- User describes a scenario they were told about
-- Any raw material that informs the frame
-
-**Shaping doc** is where active work happens. All exploration, requirements gathering, shape comparison, breadboarding, and fit checking happens here. This is the working document and ground truth for R, shapes, parts, and fit checks.
-
-**Slices doc** is created when the selected shape is breadboarded and ready to build. It contains the slice breakdown, affordance tables per slice, and detailed wiring.
-
-### File Management
-
-- **Shaping doc**: Update freely as you iterate — this is the ground truth
-- **Slices doc**: Created when ready to slice, updated as slice scope clarifies
-- **Slice plans**: Individual files (V1-plan.md, etc.) with implementation details
-
-### Frontmatter
-
-Every shaping document (shaping doc, frame, slices doc) must include `shaping: true` in its YAML frontmatter. This enables tooling hooks (e.g., ripple-check reminders) that help maintain consistency across documents.
+**Frontmatter (required):** every shaping document (frame, shaping doc, slices doc) must include `shaping: true` in its YAML frontmatter. This enables the ripple-check hook that keeps the documents consistent.
 
 ```markdown
 ---
@@ -538,21 +416,18 @@ shaping: true
 ---
 
 # [Feature Name] — Shaping
-...
 ```
 
-### Keeping Documents in Sync
-
-See **Multi-Level Consistency** at the top of this document. Changes at any level must ripple to affected levels above and below.
+Changes at any level must ripple to affected levels above and below — see **Multi-Level Consistency** at the top of this document.
 
 ## Slicing
 
-After a shape is breadboarded, slice it into vertical implementation increments. Use the `/breadboarding` skill for the slicing process — it defines what vertical slices are, the procedure for creating them, and visualization formats.
+After a shape is breadboarded, slice it into vertical implementation increments. Use the **`/slicing`** skill for this — it defines what a vertical slice is, the procedure for creating slices, and the visualization formats.
 
 **The flow:**
 1. **Parts** → high-level mechanisms in the shape
 2. **Breadboard** → concrete affordances with wiring (use `/breadboarding`)
-3. **Slices** → vertical increments that can each be demoed (use `/breadboarding` slicing section)
+3. **Slices** → vertical increments that can each be demoed (use the `/slicing` skill)
 
 **Key principle:** Every slice must end in demo-able UI. A slice without visible output is a horizontal layer, not a vertical slice.
 

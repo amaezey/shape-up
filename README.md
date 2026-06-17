@@ -18,8 +18,9 @@ These turn transcripts of real conversations into structured shaping documents. 
 For working with Claude directly on shaping and design.
 
 - **`/shaping`** — Iterate on both the problem (requirements) and solution (shapes) before committing to implementation, with fit checks to see what's solved and what isn't.
-- **`/breadboarding`** — Map a system into UI affordances, code affordances, and wiring in one view. Good for slicing into vertical scopes.
+- **`/breadboarding`** — Map a system into UI affordances, code affordances, and wiring in one view.
 - **`/breadboard-reflection`** — Sync an existing breadboard to the implementation, then find and fix design smells.
+- **`/slicing`** — Break a completed breadboard into vertical, demo-able implementation slices (V1–V9) and plan build order.
 
 > Skills are namespaced by plugin, so they're invoked as `/shape-up:shaping`, `/shape-up:breadboarding`, etc. (or picked automatically when their description matches the task).
 
@@ -59,9 +60,10 @@ shape-up/
 │   ├── plugin.json          # Plugin manifest
 │   └── marketplace.json     # Single-plugin marketplace entry
 ├── skills/
-│   ├── shaping/SKILL.md
-│   ├── breadboarding/SKILL.md
+│   ├── shaping/              # SKILL.md + references/ (spikes, documents)
+│   ├── breadboarding/        # SKILL.md + references/ (examples, mermaid, chunking, whiteboard)
 │   ├── breadboard-reflection/SKILL.md
+│   ├── slicing/SKILL.md
 │   ├── framing-doc/SKILL.md
 │   └── kickoff-doc/SKILL.md
 ├── hooks/
