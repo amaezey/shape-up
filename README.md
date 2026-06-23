@@ -6,7 +6,7 @@ The plugin packages the shaping and breadboarding skills from [rjs/shaping-skill
 
 ## What it does
 
-Shape Up is Basecamp's method for defining work before committing to it. The plugin brings six of those moves into Claude Code as skills.
+Shape Up is Basecamp's method for defining work before committing to it. The plugin turns six parts of the method into Claude Code skills.
 
 The skills give your input a usable shape, but they will not judge whether the thinking behind it is sound. Hand `/framing-doc` a sharp product conversation and a sharp frame comes back, far faster than writing one by hand. Hand it a rambling call and you get tidy nonsense that looks every bit as polished, so vetting the input stays your job.
 
@@ -84,7 +84,7 @@ claude --plugin-dir /path/to/shape-up
 
 ## Testing
 
-How to test the plugin. You only need this if you are modifying your own copy.
+How to test the plugin. Only relevant if you are modifying your own copy.
 
 The repo carries a test suite for the failures you will not notice until a user does: a malformed manifest, a skill missing its frontmatter, a hook that never fires. Run it before you commit:
 
