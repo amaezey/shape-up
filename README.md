@@ -1,96 +1,100 @@
 # Shape Up
 
-A Claude Code plugin for doing [Shape Up](https://basecamp.com/shapeup) work with Claude: shaping problems and solutions before you build, mapping how a system fits together, and turning messy call transcripts into documents your team can actually use.
+Shape Up skills for Claude Code: shape the work before you build it, map how a system fits together, and turn raw conversations into the documents a team builds from.
 
-It packages the shaping and breadboarding skills from [rjs/shaping-skills](https://github.com/rjs/shaping-skills) (MIT) as a plugin, so the skills and the ripple-check hook install in one step. No symlinking, no editing `settings.json`. From there it adds a few more skills of its own.
+This plugin packages the shaping and breadboarding skills from [rjs/shaping-skills](https://github.com/rjs/shaping-skills) (MIT), then adds four more of its own. Installing it brings every skill and the ripple-check hook in one step, so you skip the manual symlinking and `settings.json` editing.
 
-## What it's good for (and what it isn't)
+## What it does
 
-Shape Up gives Claude six skills that structure your thinking at different stages of a project. They take what you hand them and give it a usable shape. What they don't do is decide whether your thinking is any good.
+Shape Up is Basecamp's method for defining work before committing to it. This plugin brings six of its moves into Claude Code as skills.
 
-That gap matters most for the document skills. Feed `/framing-doc` a thoughtful product conversation and you get back a clean frame in a fraction of the time it would take to write by hand. Feed it a rambling, half-baked call and you get a clean document built on rambling, half-baked ideas. Garbage in, garbage out, and the output looks polished either way, so judging the input is on you.
+The skills give your raw input a usable shape, but they will not judge whether the thinking behind that input is sound. Hand `/framing-doc` a sharp product conversation and a sharp frame comes back, far faster than writing one by hand. Hand it a rambling call and you get tidy nonsense, formatted just as nicely, so vetting the input stays your job.
 
-A few things it won't do:
+Three limits worth knowing up front:
 
-- It won't tell you whether your idea is worth building. Use your own judgment, or something like office-hours, for that.
-- It won't write your code or run your project. It produces documents and maps; you build from them.
-- The document skills need a real transcript to work from. No transcript, nothing useful comes out.
+- Shape Up will not tell you whether an idea is worth building. Bring your own judgment.
+- The skills produce documents and maps, not code. You build from those.
+- The document skills need a real transcript. Without one, nothing useful comes out.
 
-## The skills
+## Workflow
 
-Invoke a skill by name (`/shape-up:shaping`) or just describe what you're doing and let Claude pick the one that matches.
+The work moves through stages, and each skill owns one. You frame the problem from your conversations, shape a solution against its requirements, breadboard the chosen shape into concrete affordances, slice the breadboard into demoable increments, and write the kickoff for whoever builds it. Once code exists, breadboard-reflection pulls the map back in line with what was actually built.
 
-### Working from a conversation
+| Skill | Purpose |
+| --- | --- |
+| `/framing-doc` | Turn call transcripts into a framing doc: the problem worth solving, and why this one over the alternatives |
+| `/shaping` | Work the problem and the candidate solutions together, with fit checks that show what each solution covers and what it leaves open |
+| `/breadboarding` | Map a feature into its UI affordances, its code affordances, and the wiring between them |
+| `/slicing` | Cut a finished breadboard into vertical demoable slices, then put them in build order |
+| `/kickoff-doc` | Turn a kickoff-call transcript into a reference doc for whoever builds the project |
+| `/breadboard-reflection` | Check a breadboard against the real code and fix the design smells that crept in |
 
-- `/framing-doc` turns one or more call transcripts into a framing document: the problem worth solving, and why this one rather than the alternatives.
-- `/kickoff-doc` turns a kickoff-call transcript into a reference doc for whoever builds the thing, capturing what got shaped and agreed.
+The two document skills, `/framing-doc` and `/kickoff-doc`, are the steady ones. The four design skills are newer and rougher, so expect to steer them more.
 
-### Shaping and designing with Claude
+## Quick Example
 
-These are newer and rougher than the document skills. Expect to steer them more.
+A new feature, from the first conversation to the builder handoff:
 
-- `/shaping` works the problem and the candidate solutions together before you commit, with fit checks that show what each approach solves and what it leaves open.
-- `/breadboarding` maps a feature into its UI affordances, code affordances (handlers, queries, services, stores), and the wiring between them, in one view. Good for understanding existing code or designing something new.
-- `/slicing` takes a finished breadboard and cuts it into vertical, demo-able slices so you know what to build first.
-- `/breadboard-reflection` checks an existing breadboard against the real code and fixes the design smells that crept in.
+```text
+/shape-up:framing-doc transcripts/discovery-call.vtt
+/shape-up:shaping
+/shape-up:breadboarding
+/shape-up:slicing
+/shape-up:kickoff-doc transcripts/kickoff-call.vtt
+```
 
-## How they fit together
+Auditing a breadboard after the implementation has moved on without it:
 
-A full pass through a project tends to run like this:
+```text
+/shape-up:breadboard-reflection
+```
 
-1. You have a few product conversations. `/framing-doc` distills them into the problem to solve.
-2. `/shaping` pins down requirements and weighs solutions until one fits.
-3. `/breadboarding` turns the chosen shape into a concrete map of affordances and wiring.
-4. `/slicing` breaks that map into build-and-demo increments.
-5. `/kickoff-doc` writes up the handoff for whoever builds it.
-6. Once code exists, `/breadboard-reflection` keeps the map honest as the implementation drifts.
-
-You won't always need all six, or that exact order. Reach for whichever one fits where you are.
+Invoke a skill by its namespaced name as shown here, or just describe what you are doing and let Claude pick the matching skill.
 
 ## The ripple-check hook
 
-The plugin ships a `PostToolUse` hook. Whenever Claude writes or edits a `.md` file that has `shaping: true` in its frontmatter, the hook prints a short checklist prompting you to re-check that the affordance tables and fit checks still hold. It's a nudge to keep a shaping doc consistent with itself after an edit. Every other file passes through untouched. The hook installs and turns on with the plugin, so there's nothing to wire up.
+The plugin ships a `PostToolUse` hook. Whenever Claude writes or edits a `.md` file carrying `shaping: true` in its frontmatter, the hook prints a short checklist prompting you to re-check that the affordance tables and fit checks still hold, so a shaping doc stays consistent with itself after each edit. Every other file passes through untouched. The hook installs and switches on with the plugin, so there is nothing to wire up.
 
 ## Install
 
 ### In Claude Code
 
-Run these as two separate commands. The prompt takes one slash command at a time, so paste the first, let it finish, then paste the second:
+Run the two commands one at a time. The prompt takes a single slash command per submission, so let the first finish before you send the second:
 
 ```
 /plugin marketplace add amaezey/shape-up
 /plugin install shape-up@shape-up
 ```
 
-### From your terminal
+### From a terminal
 
-One paste, both steps:
+Both steps in one paste:
 
 ```bash
 claude plugin marketplace add amaezey/shape-up && claude plugin install shape-up@shape-up
 ```
 
-### Loading a local checkout
+### A local checkout
 
-If you've cloned the repo and want to run your own copy:
+To run a clone of the repo as your own copy:
 
 ```bash
 claude --plugin-dir /path/to/shape-up
 ```
 
-## Working on the plugin itself
+## Working on the plugin
 
-This section is only for people changing the plugin, not using it.
+This section is for changing the plugin, not using it.
 
-The repo has a test suite that catches the things that break a plugin in ways you won't notice until a user hits them: malformed manifests, missing skill frontmatter, a hook that doesn't fire when it should. Run it before you commit:
+The repo carries a test suite for the failures you will not notice until a user does: a malformed manifest, a skill missing its frontmatter, a hook that never fires. Run the suite before you commit:
 
 ```bash
 bash test/run.sh
 ```
 
-[TESTING.md](TESTING.md) covers the rest: what the deterministic suite checks, how to run the `plugin-validator` agent, and the manual in-session checklist for confirming skills actually load.
+[TESTING.md](TESTING.md) documents the rest, including what the deterministic suite checks, how to run the `plugin-validator` agent, and the in-session checklist for confirming skills load.
 
-## What's in the repo
+## Repo layout
 
 ```
 shape-up/
