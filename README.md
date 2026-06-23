@@ -30,10 +30,17 @@ The plugin includes a `PostToolUse` hook (`hooks/shaping-ripple.sh`). When Claud
 
 ## Install
 
-**From GitHub (in Claude Code):**
+**From GitHub (in Claude Code) — run these as two separate commands, one at a time:**
+
+First add the marketplace:
 
 ```
 /plugin marketplace add amaezey/shape-up
+```
+
+Then install the plugin:
+
+```
 /plugin install shape-up@shape-up
 ```
 
