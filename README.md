@@ -82,17 +82,17 @@ To run a clone of the repo as your own copy:
 claude --plugin-dir /path/to/shape-up
 ```
 
-## Working on the plugin
+## Testing
 
-The rest concerns changing the plugin, not using it.
+How to test the plugin. You only need this if you are modifying your own copy.
 
-The repo carries a test suite for the failures you will not notice until a user does: a malformed manifest, a skill missing its frontmatter, a hook that never fires. Run the suite before you commit:
+The repo carries a test suite for the failures you will not notice until a user does: a malformed manifest, a skill missing its frontmatter, a hook that never fires. Run it before you commit:
 
 ```bash
 bash test/run.sh
 ```
 
-[TESTING.md](TESTING.md) documents the rest, including what the deterministic suite checks, how to run the `plugin-validator` agent, and the in-session checklist for confirming skills load.
+[TESTING.md](TESTING.md) covers the full approach: what the deterministic suite checks, how to run the `plugin-validator` agent, and the in-session checklist for confirming skills load.
 
 ## Repo layout
 
