@@ -8,7 +8,7 @@ The plugin packages the shaping and breadboarding skills from [rjs/shaping-skill
 
 Shape Up is Basecamp's method for defining work before committing to it. The plugin turns six parts of the method into Claude Code skills.
 
-The skills give your input a usable shape, but they will not judge whether the thinking behind it is sound. Hand `/framing-doc` a sharp product conversation and a sharp frame comes back, far faster than writing one by hand. Hand it a rambling call and you get tidy nonsense that looks every bit as polished, so vetting the input stays your job.
+The skills give your input a usable shape, but they will not judge whether the thinking behind it is sound. Hand `/framing-doc` a well-thought-through conversation and a strong frame comes back, far faster than writing one by hand. Hand it a rambling call and you get tidy nonsense that looks every bit as polished, so vetting the input stays your job.
 
 The plugin has limits:
 
@@ -18,7 +18,7 @@ The plugin has limits:
 
 ## Workflow
 
-The work moves through stages, and each skill owns one. You frame the problem from your conversations, shape a solution against its requirements, breadboard the chosen shape into concrete affordances, slice the breadboard into demoable increments, and write the kickoff for whoever builds it. Once code exists, breadboard-reflection pulls the map back in line with the implementation.
+Each skill is a stage of the work. You frame the problem from your conversations, shape a solution against its requirements, breadboard the chosen shape into concrete affordances, slice the breadboard into demoable increments, and write the kickoff for whoever builds it. Once code exists, breadboard-reflection pulls the map back in line with the implementation.
 
 | Skill | Purpose |
 | --- | --- |
