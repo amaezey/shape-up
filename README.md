@@ -1,24 +1,24 @@
 # Shape Up
 
-Shape Up skills for Claude Code: shape the work before you build it, map how a system fits together, and turn raw conversations into the documents a team builds from.
+Shape Up skills for Claude Code: shape work before you build it, map how a system fits together, and turn meeting transcripts into documents a team can build from.
 
-This plugin packages the shaping and breadboarding skills from [rjs/shaping-skills](https://github.com/rjs/shaping-skills) (MIT), then adds four more of its own. Installing it brings every skill and the ripple-check hook in one step, so you skip the manual symlinking and `settings.json` editing.
+The plugin packages the shaping and breadboarding skills from [rjs/shaping-skills](https://github.com/rjs/shaping-skills), MIT-licensed, and adds four more. Installing brings every skill and its hook together in one step, with no manual symlinking or `settings.json` editing.
 
 ## What it does
 
-Shape Up is Basecamp's method for defining work before committing to it. This plugin brings six of its moves into Claude Code as skills.
+Shape Up is Basecamp's method for defining work before committing to it. The plugin brings six of those moves into Claude Code as skills.
 
-The skills give your raw input a usable shape, but they will not judge whether the thinking behind that input is sound. Hand `/framing-doc` a sharp product conversation and a sharp frame comes back, far faster than writing one by hand. Hand it a rambling call and you get tidy nonsense, formatted just as nicely, so vetting the input stays your job.
+The skills give your input a usable shape, but they will not judge whether the thinking behind it is sound. Hand `/framing-doc` a sharp product conversation and a sharp frame comes back, far faster than writing one by hand. Hand it a rambling call and you get tidy nonsense that looks every bit as polished, so vetting the input stays your job.
 
-Three limits worth knowing up front:
+The plugin has limits:
 
-- Shape Up will not tell you whether an idea is worth building. Bring your own judgment.
-- The skills produce documents and maps, not code. You build from those.
-- The document skills need a real transcript. Without one, nothing useful comes out.
+- It will not tell you whether an idea is worth building. Bring your own judgment.
+- The skills produce documents and maps to build from, not code.
+- The document skills need a transcript, and produce nothing without one.
 
 ## Workflow
 
-The work moves through stages, and each skill owns one. You frame the problem from your conversations, shape a solution against its requirements, breadboard the chosen shape into concrete affordances, slice the breadboard into demoable increments, and write the kickoff for whoever builds it. Once code exists, breadboard-reflection pulls the map back in line with what was actually built.
+The work moves through stages, and each skill owns one. You frame the problem from your conversations, shape a solution against its requirements, breadboard the chosen shape into concrete affordances, slice the breadboard into demoable increments, and write the kickoff for whoever builds it. Once code exists, breadboard-reflection pulls the map back in line with the implementation.
 
 | Skill | Purpose |
 | --- | --- |
@@ -27,9 +27,9 @@ The work moves through stages, and each skill owns one. You frame the problem fr
 | `/breadboarding` | Map a feature into its UI affordances, its code affordances, and the wiring between them |
 | `/slicing` | Cut a finished breadboard into vertical demoable slices, then put them in build order |
 | `/kickoff-doc` | Turn a kickoff-call transcript into a reference doc for whoever builds the project |
-| `/breadboard-reflection` | Check a breadboard against the real code and fix the design smells that crept in |
+| `/breadboard-reflection` | Check a breadboard against the code and fix the design smells that crept in |
 
-The two document skills, `/framing-doc` and `/kickoff-doc`, are the steady ones. The four design skills are newer and rougher, so expect to steer them more.
+`/framing-doc` and `/kickoff-doc` do one narrow job, transcript in and structured doc out, so their output is predictable. The four design skills are open-ended and less proven, so their output varies and needs more correcting.
 
 ## Quick Example
 
@@ -49,7 +49,7 @@ Auditing a breadboard after the implementation has moved on without it:
 /shape-up:breadboard-reflection
 ```
 
-Invoke a skill by its namespaced name as shown here, or just describe what you are doing and let Claude pick the matching skill.
+Invoke a skill by its namespaced name as shown here, or describe what you are doing and let Claude pick the matching skill.
 
 ## The ripple-check hook
 
@@ -84,7 +84,7 @@ claude --plugin-dir /path/to/shape-up
 
 ## Working on the plugin
 
-This section is for changing the plugin, not using it.
+The rest concerns changing the plugin, not using it.
 
 The repo carries a test suite for the failures you will not notice until a user does: a malformed manifest, a skill missing its frontmatter, a hook that never fires. Run the suite before you commit:
 
@@ -120,4 +120,4 @@ shape-up/
 
 ## Credit
 
-The original shaping and breadboarding skills and the ripple-check hook are by [rjs](https://github.com/rjs/shaping-skills), MIT-licensed. See the case study, [Shaping 0-1 with Claude Code](https://x.com/rjs/status/2020184079350563263), and the source project [rjs/tick](https://github.com/rjs/tick). This plugin repackages that work and extends it; the skills and tooling beyond the original scope are by Mae Kennedy.
+The original shaping and breadboarding skills and the ripple-check hook are by [rjs](https://github.com/rjs/shaping-skills), MIT-licensed. See the case study, [Shaping 0-1 with Claude Code](https://x.com/rjs/status/2020184079350563263), and the source project [rjs/tick](https://github.com/rjs/tick). The plugin repackages that work and extends it; the skills and tooling beyond the original scope are by Mae Kennedy.
