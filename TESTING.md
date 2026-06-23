@@ -3,7 +3,7 @@
 This plugin has two kinds of surface, and they're tested differently:
 
 - **Code** — the ripple-check hook (`hooks/shaping-ripple.sh`) is a deterministic bash script. It is unit-tested.
-- **Prompts** — the five skills are markdown an LLM interprets. Whether they *load and trigger* is verifiable; whether they produce *good* documents is a judgment call (the skills are deliberately GIGO). Those are covered by a manual checklist, not by asserting on LLM output.
+- **Prompts** — the five skills are markdown an LLM interprets. Whether they *load and trigger* is verifiable; whether they produce *good* documents is a judgment call (the skills are deliberately GIGO). A manual checklist covers both, rather than asserting on LLM output.
 
 Don't mistake a green suite for "the skills are good." The suite proves the plugin is **well-formed and the hook behaves correctly** — not that a framing doc it helps write is any good.
 
